@@ -61,7 +61,7 @@ class AdminController{
             "base_path" => "http://localhost/Blog-PVNN-main/app/views/assets/admin"
         ];
 
-        $this->loadView("admin/index.php", $data);
+        $this->loadView("admin/home.php", $data);
     }
 
    

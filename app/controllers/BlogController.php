@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . "/../repository/UserRepository.php";
 require_once __DIR__ . "/../repository/PostsRepository.php";
-require_once __DIR__ . "/../repository/CatRepository.php";
+require_once __DIR__ . "/../repository/CategoryRepository.php";
 
 
 $cUsuario = new BlogController();
@@ -18,7 +18,8 @@ class BlogController {
 
 	function __construct(){
 
-        $this->base_path = "http://localhost/Blog-PVNN-main";
+        // ALTERAR PARA O CAMINHO DO SEU COMPUTADOR
+        $this->base_path = "http://localhost:8080/pvnn-orientacao-main/pvnn";
 		
         if(isset($_POST["action"])){
 			$action = $_POST["action"];
@@ -31,8 +32,6 @@ class BlogController {
 		} else {
 			$this->home();
 		}
-
-       
 	}
 
     public function callAction(string $functionName = null){
@@ -63,48 +62,54 @@ class BlogController {
 
     private function home(){
 
-
-        $pagina = 1;
-        $proximaPagina = 2;
+        $paginaAtual    = 1;
+        $proximaPagina  = 2;
         $paginaAnterior = 1;
 
         if (isset($_GET['pagina'])) {
-            $pagina = $_GET['pagina'];
-            $proximaPagina = $pagina;
-            $proximaPagina++;
+            $paginaAtual = $_GET['pagina'];
+            $proximaPagina = $paginaAtual + 1;
 
-            if($pagina > 1) {
-                $paginaAnterior = $pagina - 1;
+            if($paginaAtual > 1) {
+                $paginaAnterior = $paginaAtual - 1;
             }
         }
 
-
         //carregar tudo o que é desejado que seja exibido na home
 
-        //carregar posts
-        $postsRepository = new PostsRepository();
-        $posts = $postsRepository->findPaged(2, $pagina);
-        $data['posts'] = $posts;
-
-
-        //carregar categorias
-        $categoryRepository = new CatRepository();
-        $categories = $categoryRepository->findAll();
-        $data['categories'] = $categories;
-
-
-        $data['titulo'] = "BLOG DA ANA";
+        //informações gerais
+        $data['titulo'] = "BLOG DA ANNA";
         $data['base_path'] = $this->base_path;
         $data['pagina'] = $proximaPagina;
         $data['pagina_anterior'] = $paginaAnterior;
 
-        $this->loadView("blog/blog.php", $data, null);
+        //carregar posts
+        $postsRepository = new PostsRepository();
+        //$posts = $postsRepository->findPaged(2, $paginaAtual);
+        $posts = $postsRepository->findAll();
+        $data['posts'] = $posts;
+
+        
+        //carregar categorias
+        $categoryRepository = new CategoryRepository();
+        $categories = $categoryRepository->findAll();
+        $data['categories'] = $categories;
+
+        // *** IMPORTANTE ***
+        //1 - Qual tela será carregada? 
+        //REPOSTA: blog/home.php
+        
+        //2 - Com quais dados? 
+        //RESPOSTA: $data é uma lista, um array, ou seja, todos os dados inseridos 
+        //em $data estarão disponíveis para serem usadas por essa tela.
+
+        $this->loadView("blog/home.php", $data, null);
     }
 
 
     private function post(){
         $idParam = $_GET['id'];
-
+        
         $userRepository = new UserRepository();
         $user = $userRepository->findUserById($idParam);
 

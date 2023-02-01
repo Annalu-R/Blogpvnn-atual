@@ -5,7 +5,7 @@
 
     class PostsRepository {
 
-        public PDO $conn;
+        public $conn;
 
         function __construct()
         {

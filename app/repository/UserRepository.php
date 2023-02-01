@@ -5,7 +5,7 @@
 
     class UserRepository {
 
-        public PDO $conn;
+        public $conn;
 
         function __construct()
         {
