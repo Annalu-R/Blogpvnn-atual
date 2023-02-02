@@ -3,15 +3,15 @@
 <div class="main-content home col-9">
 
 
-<!-- REPETIR POSTAGENS -->
-<?php foreach($data['posts'] as $post): ?>
+  <!-- REPETIR POSTAGENS -->
+  <?php foreach($data['posts'] as $post): ?>
 
-  <?php $dataFormatada = new DateTime($post['data']); ?>
+    <?php $dataFormatada = new DateTime($post['data']); ?>
 
-<?php endforeach; ?>
-<?php include "menu_lateral.php"; ?> 
+  <?php endforeach; ?>
 
-<main>
+
+  <main>
 
 
 
@@ -125,7 +125,7 @@
 
 </div><!-- /.main-content-->
 
-
+<?php include "menu_lateral.php"; ?> 
 
 
 
