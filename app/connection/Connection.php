@@ -3,9 +3,9 @@
 class Connection {
 
     private static $host = "localhost";
-    private static $dbname = "pvnn";
+    private static $dbname = "db_pvnn";
     private static $user = "root";
-    private static $password = "";
+    private static $password = "bancodedados";
 
     private static $conn = null;
 

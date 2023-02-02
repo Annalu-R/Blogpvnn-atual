@@ -28,7 +28,7 @@ class PostsModel {
 	}
 
 	public function getTitulo(): string{
-		return $this-$titulo;
+		return $this->titulo;
 	}
 	
 	public function setTitulo(string $titulo){
@@ -36,7 +36,7 @@ class PostsModel {
 	}
 
 	public function getTexto(): string{
-		return $this-$texto;
+		return $this->texto;
 	}
 	
 	public function setTexto(string $text){

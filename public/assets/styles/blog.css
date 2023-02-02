@@ -1,0 +1,32 @@
+.titulo{
+  font-size: 20px;
+}
+
+.subtitulo{
+  font-family: serif;
+  font-style: italic;
+
+}
+
+.titulo-subtitulo{
+  margin-left: 15px;
+  padding-left: 15px;
+}
+
+/* HOME */
+
+/* POSTAGENS */
+.blog-post {
+
+}
+
+.blog-post .data-autor {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 13px;
+  font-style: italic;
+
+}
+
+.blog-post .post-rodape {
+  background: #eee;
+}

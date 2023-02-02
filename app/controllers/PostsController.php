@@ -54,7 +54,7 @@ class PostsController{
 
     private function create(){
         
-        $cPosts = new PostsModel();
+        $posts = new PostsModel();
         // $posts->setNome("aaa");
         // $posts->setTelefone("123213");
         // $posts->setEmail("asd@asd");

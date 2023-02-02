@@ -50,7 +50,7 @@
             return $posts;
         }
 
-        public function findPostByIdPosts(int $idPosts) {
+        public function findPostById(int $id) {
             $query = "SELECT * FROM postagens WHERE idPosts = ?";
             $prepare = $this->conn->prepare($query);
             $prepare->bindParam(1, $id, PDO::PARAM_INT);
